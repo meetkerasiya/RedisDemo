@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "HS0NWj19iHAUi9+TyTvINlDy07H4baNzj/Emn5sIQeWDSmKNAeqUQ/XLqYnyxH8Wrh1mh4R1KM8t33U59bXjFQ==",
+  "dgSpecHash": "mzOt01qxW2rDzSAX6KRrpRj9rGUuimWMDKwKzggtK2HUBgmYFVHDf97sLb9rea5t/onTpzG24/Lv7mM0ezh+ow==",
   "success": true,
   "projectFilePath": "C:\\Users\\Meet  Kerasiya\\source\\repos\\APIwithRedis\\APIwithRedis\\APIwithRedis.csproj",
   "expectedPackageFiles": [
@@ -16,6 +16,7 @@
     "C:\\Users\\Meet  Kerasiya\\.nuget\\packages\\microsoft.openapi\\1.4.3\\microsoft.openapi.1.4.3.nupkg.sha512",
     "C:\\Users\\Meet  Kerasiya\\.nuget\\packages\\microsoft.win32.registry\\5.0.0\\microsoft.win32.registry.5.0.0.nupkg.sha512",
     "C:\\Users\\Meet  Kerasiya\\.nuget\\packages\\microsoft.win32.systemevents\\5.0.0\\microsoft.win32.systemevents.5.0.0.nupkg.sha512",
+    "C:\\Users\\Meet  Kerasiya\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\Meet  Kerasiya\\.nuget\\packages\\pipelines.sockets.unofficial\\2.2.0\\pipelines.sockets.unofficial.2.2.0.nupkg.sha512",
     "C:\\Users\\Meet  Kerasiya\\.nuget\\packages\\stackexchange.redis\\2.2.4\\stackexchange.redis.2.2.4.nupkg.sha512",
     "C:\\Users\\Meet  Kerasiya\\.nuget\\packages\\swashbuckle.aspnetcore\\6.4.0\\swashbuckle.aspnetcore.6.4.0.nupkg.sha512",

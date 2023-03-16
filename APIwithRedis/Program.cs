@@ -16,7 +16,7 @@ builder.Services.AddStackExchangeRedisCache(redisoptions =>
 });
 
 
-await Redis_Data_seed.DataSeed(builder);
+builder.Services.AddScoped<ICacheSetup,CacheSetup>();
 
 var app = builder.Build();
 

@@ -48,3 +48,4 @@ C:\Users\Meet  Kerasiya\source\repos\APIwithRedis\APIwithRedis\obj\Debug\net7.0\
 C:\Users\Meet  Kerasiya\source\repos\APIwithRedis\APIwithRedis\obj\Debug\net7.0\APIwithRedis.pdb
 C:\Users\Meet  Kerasiya\source\repos\APIwithRedis\APIwithRedis\obj\Debug\net7.0\APIwithRedis.genruntimeconfig.cache
 C:\Users\Meet  Kerasiya\source\repos\APIwithRedis\APIwithRedis\obj\Debug\net7.0\ref\APIwithRedis.dll
+C:\Users\Meet  Kerasiya\source\repos\APIwithRedis\APIwithRedis\bin\Debug\net7.0\Newtonsoft.Json.dll

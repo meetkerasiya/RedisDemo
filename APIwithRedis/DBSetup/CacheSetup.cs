@@ -1,4 +1,5 @@
-﻿using APIwithRedis.Models;
+﻿using APIwithRedis.Extensions;
+using APIwithRedis.Models;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Logging;
 using StackExchange.Redis;
@@ -7,11 +8,12 @@ using System.Threading;
 
 namespace APIwithRedis.DBSetup
 {
-    public  class Redis_Data_seed
+    public class CacheSetup : ICacheSetup
     {
-        public Redis_Data_seed(IDistributedCache cache)
+        public CacheSetup(IDistributedCache cache, ILogger<CacheSetup> logger)
         {
             _cache = cache;
+            _logger = logger;
         }
         static string[] vendors = { "Carrier", "Carrier", "Carrier", "Carrier", "Publisher", "Publisher", "Publisher", "Publisher", "Seller", "Seller", "Seller", "Seller", "Seller", "Charity", "Charity", "Charity", "Charity", "Carrier", "Publisher", "Seller", "Charity", "Seller" };
         static string[] paymentMethod = { "Bank transfer", "Bank transfer", "Check", "Check", "Bank transfer", "Bank transfer", "Check", "Check", "Bank transfer", "Bank transfer", "Check", "Check", "Peddle Carrier check", "Bank transfer", "Bank transfer", "Check", "Check", "Check", "Check", "Check", "Check", "Check" };
@@ -19,48 +21,39 @@ namespace APIwithRedis.DBSetup
         static string[] paymentSystemName = { "Peddle", "Frost", "Peddle", "Lob", "Peddle", "Frost", "Peddle", "Lob", "Peddle", "Frost", "Peddle", "Lob", "Peddle Carrier", "Peddle", "Frost", "Peddle", "Lob", "Checkbook.io", "Checkbook.io", "Checkbook.io", "Checkbook.io", "Peddle Carrier" };
         static string[] bankAccountName = { "Frost Bank XX5108", "Frost Bank XX5108", "Frost Bank XX5108", "Frost Bank XX5108", "Frost Bank XX5108", "Frost Bank XX5108", "Frost Bank XX5108", "Frost Bank XX5108", "Frost Bank XX5108", "Frost Bank XX5108", "Frost Bank XX5108", "Frost Bank XX5108", "Frost Bank XX0678", "Frost Bank XX5108", "Frost Bank XX5108", "Frost Bank XX5108", "Frost Bank XX5108", "Frost Bank XX0678", "Frost Bank XX0678", "Frost Bank XX0678", "Frost Bank XX0678", "Frost Bank XX0678" };
         private readonly IDistributedCache _cache;
+        private readonly ILogger _logger;
+        private static List<PaymentOptions> paymentOptions;
 
 
-
-        //public static async Task LoadData(WebApplicationBuilder builder)
-        public static async Task LoadData()
+        public async Task LoadData()
         {
-            //ConnectionMultiplexer redis = ConnectionMultiplexer.Connect( builder.Configuration.GetConnectionString("Redis"));
+            string recordKey = "abc";
+            paymentOptions = await _cache.GetRecordAsync<List<PaymentOptions>>(recordKey);
+            if (paymentOptions is null)
+            {
+                paymentOptions = await GetPaymentOptionsAsync();
+                await _cache.SetRecordAsync(recordKey, paymentOptions);
+                _logger.LogInformation("Data added to cache");
+            }
+            else
+            {
+                _logger.LogInformation("Data is alredy in cache");
+            }
 
-            //IDatabase db = redis.GetDatabase();
 
-            
-            
-
-            //for(int i=0;i<vendors.Length;i++)
-            //{
-            //    var hash = new HashEntry[]
-
-            //    {
-            //        new HashEntry("Vendor",vendors[i]),
-            //        new HashEntry("PaymentMethod",paymentMethod[i]),
-            //        new HashEntry("ProcessingType",processingType[i]),
-            //        new HashEntry("PaymentSystemName",paymentSystemName[i]),
-            //        new HashEntry("BankAccountName",bankAccountName[i])
-            //    };
-            //    await db.HashSetAsync($"{i}",hash);
-
-            //}
-                       
-            
         }
 
-        public async Task<PaymentOptions[]> GetPaymentOptionsAsync()
+        public async Task<List<PaymentOptions>> GetPaymentOptionsAsync()
         {
-            return Enumerable.Range(1, vendors.Length).Select(i => new PaymentOptions
+            return Enumerable.Range(0, vendors.Length).Select(i => new PaymentOptions
             {
                 Vendor = vendors[i],
                 PaymentMethod = paymentMethod[i],
-                ProcessingType= processingType[i],
-                PaymentSystemName= paymentSystemName[i],
-                BankAccountName= bankAccountName[i],
-            }).ToArray();
+                ProcessingType = processingType[i],
+                PaymentSystemName = paymentSystemName[i],
+                BankAccountName = bankAccountName[i],
+            }).ToList();
         }
-        
+
     }
 }

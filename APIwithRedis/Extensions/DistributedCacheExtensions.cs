@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Caching.Distributed;
+using Newtonsoft.Json;
 using System.Text.Json;
 
 namespace APIwithRedis.Extensions
@@ -16,7 +17,7 @@ namespace APIwithRedis.Extensions
             options.AbsoluteExpirationRelativeToNow = absoluteExpireTime ?? TimeSpan.FromMinutes(5);
             options.SlidingExpiration = unusedExpireTime;
 
-            var jsonData=JsonSerializer.Serialize(data);
+            var jsonData=JsonConvert.SerializeObject(data);
             await cache.SetStringAsync(recordId, jsonData, options);
         }
 
@@ -27,7 +28,8 @@ namespace APIwithRedis.Extensions
             {
                 return default(T);
             }
-            return JsonSerializer.Deserialize<T>(jsonData);
+            var result= JsonConvert.DeserializeObject<T>(jsonData);
+            return result;
         }
     }
 }
