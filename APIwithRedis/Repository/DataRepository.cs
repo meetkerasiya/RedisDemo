@@ -27,10 +27,10 @@ namespace APIwithRedis.Repository
             await _cacheSetup.LoadData();
             var result = await _cacheService.GetValueAsync(recordId);
             return result.FindAll(p =>
-               (p.Vendor.Equals(Vendor)) &&
-               (Payment_method?.Equals(p.PaymentMethod) ?? true) &&
-               (PaymentSystem?.Equals(p.PaymentSystemName) ?? true) &&
-               (ProcessingType?.Equals(p.ProcessingType) ?? true));
+               (Vendor.Equals(p.Vendor.ToLower())) &&
+               (Payment_method?.Equals(p.PaymentMethod.ToLower()) ?? true) &&
+               (PaymentSystem?.Equals(p.PaymentSystemName.ToLower()) ?? true) &&
+               (ProcessingType?.Equals(p.ProcessingType.ToLower()) ?? true));
 
         }
 

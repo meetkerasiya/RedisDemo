@@ -27,7 +27,7 @@ namespace APIwithRedis.API
             {
 
                
-               var validationResult=await dataRepository.CheckValidation(Vendor, Payment_method, ProcessingType, PaymentSystem);
+               var validationResult=await dataRepository.CheckValidation(Vendor.ToLower(), Payment_method?.ToLower(), ProcessingType?.ToLower(), PaymentSystem?.ToLower());
                 if (!validationResult.IsValid)
                 {
                     var result = validationResult.Errors;
@@ -38,7 +38,7 @@ namespace APIwithRedis.API
                     };
                     return Results.BadRequest(response);
                 }
-                var results=await  dataRepository.paymentResults(Vendor, Payment_method, ProcessingType, PaymentSystem);
+                var results=await  dataRepository.paymentResults(Vendor.ToLower(), Payment_method?.ToLower(), ProcessingType?.ToLower(), PaymentSystem?.ToLower());
                 return TypedResults.Ok(results);
             });
         }
