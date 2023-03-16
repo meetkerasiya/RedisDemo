@@ -1,6 +1,6 @@
 ﻿using APIwithRedis.CacheService;
 using APIwithRedis.Models;
-using Microsoft.Extensions.Caching.Distributed;s
+using Microsoft.Extensions.Caching.Distributed;
 
 namespace APIwithRedis.CacheSetup
 {
