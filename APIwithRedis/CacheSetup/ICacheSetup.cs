@@ -1,10 +1,9 @@
 ﻿using APIwithRedis.Models;
 
-namespace APIwithRedis.DBSetup
+namespace APIwithRedis.CacheSetup
 {
     public interface ICacheSetup
     {
-        Task<List<PaymentOptions>> GetPaymentOptionsAsync();
         Task LoadData();
     }
 }

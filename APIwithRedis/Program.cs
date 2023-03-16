@@ -1,5 +1,10 @@
 using APIwithRedis.API;
-using APIwithRedis.DBSetup;
+using APIwithRedis.CacheService;
+using APIwithRedis.CacheSetup;
+using APIwithRedis.Models;
+using APIwithRedis.Repository;
+using APIwithRedis.Validation;
+using FluentValidation;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,8 +20,21 @@ builder.Services.AddStackExchangeRedisCache(redisoptions =>
     redisoptions.InstanceName = "RedisPayment";
 });
 
-
+builder.Services.AddScoped<ICacheService<List<PaymentOptions>>,CacheService<List<PaymentOptions>>>();
+builder.Services.AddScoped<IValidator<PaymentOptions>, Validator>();
+builder.Services.AddScoped<IDataRepository, DataRepository>();
 builder.Services.AddScoped<ICacheSetup,CacheSetup>();
+
+//ServiceProvider service = new ServiceCollection()
+//    .AddScoped<ICacheService<List<PaymentOptions>>, CacheService<List<PaymentOptions>>>()
+//    .AddLogging()
+//    .AddDistributedMemoryCache()
+//    .AddScoped<ICacheSetup, CacheSetup>()
+//    .BuildServiceProvider();
+//var setup = service.GetService<ICacheSetup>();
+//await setup.LoadData();
+
+
 
 var app = builder.Build();
 
