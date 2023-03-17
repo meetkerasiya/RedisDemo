@@ -197,14 +197,7 @@ namespace APIwithRedis.CacheSetup
                     PaymentSystemName = "Checkbook_io",
                     BankAccountName = "Frost Bank XX0678"
                     },
-                    new PaymentOptions
-                    {
-                    Vendor = "Seller",
-                    PaymentMethod = "Check",
-                    ProcessingType = "Manual",
-                    PaymentSystemName = "Peddle_Carrier",
-                    BankAccountName = "Frost Bank XX0678"
-                    }
+                   
 
                 };
                 await _cacheService.SetValueAsync(recordKey, paymentOptions);

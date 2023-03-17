@@ -19,7 +19,7 @@ namespace APIwithRedis.API
             //    var result = await cacheService.GetValueAsync(recordId);
             //    return result;
             //});
-            app.MapGet("/payments",  async ([FromQuery] string Vendor,
+            app.MapGet("/payments",  async ([FromQuery] string? Vendor,
                 [FromQuery] string? Payment_method, 
                 [FromQuery] string? ProcessingType, 
                 [FromQuery] string? PaymentSystem, 
@@ -28,7 +28,7 @@ namespace APIwithRedis.API
             {
 
                
-               var validationResult=await dataRepository.CheckValidation(Vendor.ToLower().Trim(),
+               var validationResult=await dataRepository.CheckValidation(Vendor?.ToLower().Trim(),
                    Payment_method?.ToLower().Trim(),
                    ProcessingType?.ToLower().Trim(),
                    PaymentSystem?.ToLower().Trim());

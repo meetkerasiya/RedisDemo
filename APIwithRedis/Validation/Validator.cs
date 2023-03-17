@@ -1,21 +1,33 @@
 ﻿using APIwithRedis.EnumClasses;
 using APIwithRedis.Models;
 using FluentValidation;
-
+ 
 namespace APIwithRedis.Validation
 {
     public class Validator : AbstractValidator<PaymentOptions>
     {
         public Validator()
         {
-            RuleFor(x => x.Vendor)
+            When(x => x.Vendor is null, () =>
+            {
+                RuleFor(x => x.Vendor)
                 .NotEmpty()
-                .Must(v => new[] { VendorEnums.carrier.ToString(), 
+                .WithErrorCode("null_vendor_type")
+                .WithMessage("Vendor type is null");
+            });
+            When(x => x.Vendor != null, () =>
+            {
+
+
+                RuleFor(x => x.Vendor)
+                    .NotEmpty()
+                    .Must(v => new[] { VendorEnums.carrier.ToString(),
                     VendorEnums.publisher.ToString(),
                     VendorEnums.charity.ToString(),
                     VendorEnums.seller.ToString() }.Contains(v))
-                .WithErrorCode(errorCode: "invalid_vendor_type")
-                .WithMessage("Vendor Type invalid");
+                    .WithErrorCode(errorCode: "invalid_vendor_type")
+                    .WithMessage("Vendor Type invalid");
+            });
 
             When(x => x.PaymentMethod != null , () =>
             {
