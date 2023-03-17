@@ -7351,9 +7351,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Meet  Kerasiya\\source\\repos\\APIwithRedis\\RediaApi.Test\\RediaApi.Test.csproj",
-      "projectName": "RediaApi.Test",
-      "projectPath": "C:\\Users\\Meet  Kerasiya\\source\\repos\\APIwithRedis\\RediaApi.Test\\RediaApi.Test.csproj",
+      "projectUniqueName": "C:\\Users\\Meet  Kerasiya\\source\\repos\\APIwithRedis\\RediaApi.Test\\RedisApi.Test.csproj",
+      "projectName": "RedisApi.Test",
+      "projectPath": "C:\\Users\\Meet  Kerasiya\\source\\repos\\APIwithRedis\\RediaApi.Test\\RedisApi.Test.csproj",
       "packagesPath": "C:\\Users\\Meet  Kerasiya\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Meet  Kerasiya\\source\\repos\\APIwithRedis\\RediaApi.Test\\obj\\",
       "projectStyle": "PackageReference",

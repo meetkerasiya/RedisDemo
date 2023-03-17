@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "oImLRxXPh/vwsBvxGPmtxGIOZg33vXjbCZLvzv7WWoI/ZA1IOglKRF9HR8Y7fgOXfUUZeUZ8VxcdYlWuGG8+uA==",
+  "dgSpecHash": "SgZGGTmYCfPlQBJo2ejt2X31nvzsefrCwQpN/MsLvYE68gFFEHDLCT5MtyG4s86c2p1f7kq0sRFFHimyeTteIw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Meet  Kerasiya\\source\\repos\\APIwithRedis\\RediaApi.Test\\RediaApi.Test.csproj",
+  "projectFilePath": "C:\\Users\\Meet  Kerasiya\\source\\repos\\APIwithRedis\\RediaApi.Test\\RedisApi.Test.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Meet  Kerasiya\\.nuget\\packages\\coverlet.collector\\3.1.2\\coverlet.collector.3.1.2.nupkg.sha512",
     "C:\\Users\\Meet  Kerasiya\\.nuget\\packages\\fluentvalidation\\11.5.1\\fluentvalidation.11.5.1.nupkg.sha512",

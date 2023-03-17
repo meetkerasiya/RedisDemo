@@ -2,7 +2,7 @@ using APIwithRedis.Models;
 using APIwithRedis.Validation;
 using FluentValidation.TestHelper;
 
-namespace RediaApi.Test
+namespace RedisApi.Test
 {
     public class APIValidationTest
     {
