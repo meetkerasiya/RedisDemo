@@ -13,18 +13,18 @@ namespace APIwithRedis.API
 
         public static void MapRoutes(WebApplication app)
         {
-            app.MapGet("/getall", async (ICacheSetup cacheSetup,
-                ICacheService<List<PaymentOptions>> cacheService) =>
-            { 
-                var result = await cacheService.GetValueAsync(recordId);
-                return result;
-            });
+            //app.MapGet("/getall", async (ICacheSetup cacheSetup,
+            //    ICacheService<List<PaymentOptions>> cacheService) =>
+            //{ 
+            //    var result = await cacheService.GetValueAsync(recordId);
+            //    return result;
+            //});
             app.MapGet("/payments",  async ([FromQuery] string Vendor,
                 [FromQuery] string? Payment_method, 
                 [FromQuery] string? ProcessingType, 
                 [FromQuery] string? PaymentSystem, 
-                IDataRepository dataRepository,
-                ICacheSetup setup) =>
+                IDataRepository dataRepository
+               ) =>
             {
 
                

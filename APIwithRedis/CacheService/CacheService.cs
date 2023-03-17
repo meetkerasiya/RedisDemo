@@ -50,9 +50,9 @@ namespace APIwithRedis.CacheService
                 };
                 await _distributedCache.SetStringAsync(key, valueString, distributedCacheEntryOptions);
             }
-            catch
+            catch(Exception ex) 
             {
-
+                _logger.LogWarning(ex, "failed to load data to redis");
             }
         }
 

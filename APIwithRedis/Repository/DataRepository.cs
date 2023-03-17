@@ -11,7 +11,6 @@ namespace APIwithRedis.Repository
     public class DataRepository : IDataRepository
     {
         
-        private readonly IDistributedCache _cache;
         private readonly ICacheService<List<PaymentOptions>> _cacheService;
         private readonly IValidator<PaymentOptions> _validator;
         private readonly ICacheSetup _cacheSetup;
@@ -69,7 +68,6 @@ namespace APIwithRedis.Repository
 
                 } ;
                 response.Add(res);
-                Console.WriteLine("Hello");
             }
             return response;
 

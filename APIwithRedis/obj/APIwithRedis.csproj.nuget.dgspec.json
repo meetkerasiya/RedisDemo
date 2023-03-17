@@ -40,10 +40,6 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
-            "EnumExtensions": {
-              "target": "Package",
-              "version": "[1.0.2, )"
-            },
             "FluentValidation": {
               "target": "Package",
               "version": "[11.5.1, )"

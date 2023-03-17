@@ -41,7 +41,7 @@ namespace APIwithRedis.CacheSetup
                     Vendor = "Carrier",
                     PaymentMethod = "Bank_transfer",
                     ProcessingType = "Automated",
-                    PaymentSystemName = "Frost",
+                    PaymentSystemName = "Peddle",
                     BankAccountName = "Frost Bank XX5108"
                     },
 
@@ -74,7 +74,7 @@ namespace APIwithRedis.CacheSetup
                     Vendor = "Publisher",
                     PaymentMethod = "Bank_transfer",
                     ProcessingType = "Automated",
-                    PaymentSystemName = "Frost",
+                    PaymentSystemName = "Peddle",
                     BankAccountName = "Frost Bank XX5108"
                     },
                     new PaymentOptions
@@ -106,7 +106,7 @@ namespace APIwithRedis.CacheSetup
                     Vendor = "Seller",
                     PaymentMethod = "Bank_transfer",
                     ProcessingType = "Automated",
-                    PaymentSystemName = "Frost",
+                    PaymentSystemName = "Peddle",
                     BankAccountName = "Frost Bank XX5108"
                     },
                     new PaymentOptions
@@ -146,7 +146,7 @@ namespace APIwithRedis.CacheSetup
                     Vendor = "Charity",
                     PaymentMethod = "Bank_transfer",
                     ProcessingType = "Automated",
-                    PaymentSystemName = "Frost",
+                    PaymentSystemName = "Peddle",
                     BankAccountName = "Frost Bank XX5108"
                     },
                     new PaymentOptions
