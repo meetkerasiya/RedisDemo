@@ -13,7 +13,8 @@ namespace APIwithRedis.API
 
         public static void MapRoutes(WebApplication app)
         {
-            app.MapGet("/getall", async (ICacheSetup cacheSetup, ICacheService<List<PaymentOptions>> cacheService) =>
+            app.MapGet("/getall", async (ICacheSetup cacheSetup,
+                ICacheService<List<PaymentOptions>> cacheService) =>
             { 
                 var result = await cacheService.GetValueAsync(recordId);
                 return result;
@@ -27,7 +28,10 @@ namespace APIwithRedis.API
             {
 
                
-               var validationResult=await dataRepository.CheckValidation(Vendor.ToLower().Trim(), Payment_method?.ToLower().Trim(), ProcessingType?.ToLower().Trim(), PaymentSystem?.ToLower().Trim());
+               var validationResult=await dataRepository.CheckValidation(Vendor.ToLower().Trim(),
+                   Payment_method?.ToLower().Trim(),
+                   ProcessingType?.ToLower().Trim(),
+                   PaymentSystem?.ToLower().Trim());
                 if (!validationResult.IsValid)
                 {
                     var result = validationResult.Errors;
@@ -38,7 +42,10 @@ namespace APIwithRedis.API
                     };
                     return Results.BadRequest(response);
                 }
-                var results=await  dataRepository.paymentResults(Vendor.ToLower().Trim(), Payment_method?.ToLower().Trim(), ProcessingType?.ToLower().Trim(), PaymentSystem?.ToLower().Trim());
+                var results=await  dataRepository.paymentResults(Vendor.ToLower().Trim(),
+                    Payment_method?.ToLower().Trim(),
+                    ProcessingType?.ToLower().Trim(),
+                    PaymentSystem?.ToLower().Trim());
                 return TypedResults.Ok(results);
             });
         }

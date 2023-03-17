@@ -128,9 +128,9 @@ namespace APIwithRedis.CacheSetup
                     new PaymentOptions
                     {
                     Vendor = "Seller",
-                    PaymentMethod = "Peddle Carrier check",
+                    PaymentMethod = "check",
                     ProcessingType = "Manual",
-                    PaymentSystemName = "Peddle Carrier",
+                    PaymentSystemName = "Peddle_Carrier",
                     BankAccountName = "Frost Bank XX0678"
                     },
                     new PaymentOptions
@@ -170,7 +170,7 @@ namespace APIwithRedis.CacheSetup
                     Vendor = "Carrier",
                     PaymentMethod = "Check",
                     ProcessingType = "Automated",
-                    PaymentSystemName = "Checkbook.io",
+                    PaymentSystemName = "Checkbook_io",
                     BankAccountName = "Frost Bank XX0678"
                     },
                     new PaymentOptions
@@ -178,7 +178,7 @@ namespace APIwithRedis.CacheSetup
                     Vendor = "Publisher",
                     PaymentMethod = "Check",
                     ProcessingType = "Automated",
-                    PaymentSystemName = "Checkbook.io",
+                    PaymentSystemName = "Checkbook_io",
                     BankAccountName = "Frost Bank XX0678"
                     },
                     new PaymentOptions
@@ -186,7 +186,7 @@ namespace APIwithRedis.CacheSetup
                     Vendor = "Seller",
                     PaymentMethod = "Check",
                     ProcessingType = "Automated",
-                    PaymentSystemName = "Checkbook.io",
+                    PaymentSystemName = "Checkbook_io",
                     BankAccountName = "Frost Bank XX0678"
                     },
                     new PaymentOptions
@@ -194,7 +194,7 @@ namespace APIwithRedis.CacheSetup
                     Vendor = "Charity",
                     PaymentMethod = "Check",
                     ProcessingType = "Automated",
-                    PaymentSystemName = "Checkbook.io",
+                    PaymentSystemName = "Checkbook_io",
                     BankAccountName = "Frost Bank XX0678"
                     },
                     new PaymentOptions
@@ -202,7 +202,7 @@ namespace APIwithRedis.CacheSetup
                     Vendor = "Seller",
                     PaymentMethod = "Check",
                     ProcessingType = "Manual",
-                    PaymentSystemName = "Peddle Carrier",
+                    PaymentSystemName = "Peddle_Carrier",
                     BankAccountName = "Frost Bank XX0678"
                     }
 

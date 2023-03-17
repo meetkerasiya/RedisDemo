@@ -1,4 +1,5 @@
-﻿using APIwithRedis.Models;
+﻿using APIwithRedis.EnumClasses;
+using APIwithRedis.Models;
 using FluentValidation;
 
 namespace APIwithRedis.Validation
@@ -9,21 +10,21 @@ namespace APIwithRedis.Validation
         {
             RuleFor(x => x.Vendor)
                 .NotEmpty()
-                .Must(v => new[] { "publisher", "seller", "charity", "carrier" }.Contains(v))
+                .Must(v => new[] { VendorEnums.carrier.ToString() , VendorEnums.publisher.ToString() ,VendorEnums.charity.ToString(),VendorEnums.seller.ToString() }.Contains(v))
                 .WithErrorCode(errorCode: "invalid_vendor_type")
                 .WithMessage("Vendor Type invalid");
 
             When(x => x.PaymentMethod != null , () =>
             {
                 RuleFor(x => x.PaymentMethod)
-                    .Must(v => new[] { "check", "bank_transfer" }.Contains(v))
+                    .Must(v => new[] { PaymentMethodEnums.check.ToString(), PaymentMethodEnums.bank_transfer.ToString() }.Contains(v))
                     .WithErrorCode("invalid_payment_method_type")
                     .WithMessage("Payment Method Type invalid");
             });
             When(x => x.ProcessingType != null, () =>
             {
                 RuleFor(x => x.ProcessingType)
-                .Must(v => new[] { "manual", "automated" }.Contains(v))
+                .Must(v => new[] { ProcessingTypeEnums.manual.ToString(),ProcessingTypeEnums.automated.ToString() }.Contains(v))
                 .WithErrorCode("invalid_payment_processing_type")
                 .WithMessage("Payment Processing Type invalid");
             });
@@ -31,7 +32,7 @@ namespace APIwithRedis.Validation
             When(x => x.PaymentSystemName != null, () =>
             {
                 RuleFor(x => x.PaymentSystemName)
-                .Must(v => new[] { "peddle", "lob", "checkbook_io", "peddle_carrier" }.Contains(v))
+                .Must(v => new[] { ProcessorTypesEnums.peddle.ToString(),ProcessorTypesEnums.lob.ToString(),ProcessorTypesEnums.checkbook_io.ToString(),ProcessorTypesEnums.frost.ToString(),ProcessorTypesEnums.peddle_carrier.ToString(),  }.Contains(v))
                 .WithErrorCode("invalid_payment_processor")
                 .WithMessage("Payment Processor invalid");
             });
