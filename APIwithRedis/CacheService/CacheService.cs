@@ -8,7 +8,7 @@ namespace APIwithRedis.CacheService
     {
         private readonly ILogger<CacheService<TCacheValue>> _logger;
         private readonly IDistributedCache _distributedCache;
-        private readonly string _key = "abc";
+        private readonly string _key = "RedisKey";
 
         public CacheService(ILogger<CacheService<TCacheValue>> logger, IDistributedCache distributedCache)
         {
@@ -46,9 +46,9 @@ namespace APIwithRedis.CacheService
                 var valueString = JsonSerializer.Serialize(value);
                 var distributedCacheEntryOptions = new DistributedCacheEntryOptions
                 {
-                    AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(5)
+                    //AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(5)
                 };
-                await _distributedCache.SetStringAsync(key, valueString, distributedCacheEntryOptions);
+                await _distributedCache.SetStringAsync(key, valueString /*, distributedCacheEntryOptions*/);
             }
             catch(Exception ex) 
             {

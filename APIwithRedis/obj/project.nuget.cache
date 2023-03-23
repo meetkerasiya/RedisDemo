@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "dkevyzi9XBY8Rz+yDN69b8GDGa2hoBLV5uOQ49KJUu4e3TZPFKBi8iwkH2bXHLa/sSeqVFMWtJlDOGjEwCeXow==",
+  "dgSpecHash": "sKUXxezBZnRgI9VUqM46QY8A3DkrmdCD+lGat7x5zSlk9E+egkDAIBDTpAaRViva43mPiWzj7X2wkyl/AO26lA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Meet  Kerasiya\\source\\repos\\APIwithRedis\\APIwithRedis\\APIwithRedis.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Meet  Kerasiya\\.nuget\\packages\\fluentvalidation\\11.5.1\\fluentvalidation.11.5.1.nupkg.sha512",
+    "C:\\Users\\Meet  Kerasiya\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.5.1\\fluentvalidation.dependencyinjectionextensions.11.5.1.nupkg.sha512",
     "C:\\Users\\Meet  Kerasiya\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.3\\microsoft.aspnetcore.openapi.7.0.3.nupkg.sha512",
     "C:\\Users\\Meet  Kerasiya\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
     "C:\\Users\\Meet  Kerasiya\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\7.0.0\\microsoft.extensions.caching.abstractions.7.0.0.nupkg.sha512",
