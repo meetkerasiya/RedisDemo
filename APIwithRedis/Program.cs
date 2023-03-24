@@ -27,12 +27,14 @@ builder.Services.AddScoped<IValidator<PaymentOptions>, Validator>();
 builder.Services.AddScoped<IDataRepository, DataRepository>();
 builder.Services.AddSingleton<ICacheSetup,CacheSetup>();
 builder.Services.AddHostedService<CacheSetupService>();
+//builder.Services.AddValidatorsFromAssembly(AppDomain.CurrentDomain.Load("APIwithRedis"));
 
 var app = builder.Build();
 
-//app.UseMiddleware<ErrorHandlerMiddleware>();
+app.UseMiddleware<ErrorHandlerMiddleware>();
 //route
 APIRoutes.MapRoutes(app);
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

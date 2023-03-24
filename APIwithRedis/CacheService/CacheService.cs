@@ -8,7 +8,7 @@ namespace APIwithRedis.CacheService
     {
         private readonly ILogger<CacheService<TCacheValue>> _logger;
         private readonly IDistributedCache _distributedCache;
-        private readonly string _key = "RedisKey";
+        private readonly string _key = "PaymentOptions";
 
         public CacheService(ILogger<CacheService<TCacheValue>> logger, IDistributedCache distributedCache)
         {

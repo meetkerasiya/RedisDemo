@@ -6,7 +6,7 @@ namespace APIwithRedis.CacheSetup
 {
     public class CacheSetup : ICacheSetup
     {
-        string recordKey = "RedisKey";
+        string recordKey = "PaymentOptions";
         public CacheSetup(ICacheService<List<PaymentOptions>> cacheService, ILogger<CacheSetup> logger)
         {
 

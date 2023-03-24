@@ -1,5 +1,7 @@
 ﻿using APIwithRedis.Models;
+using APIwithRedis.Validation;
 using FluentValidation;
+using System.Net;
 using System.Text.Json;
 
 namespace APIwithRedis.Middlewares
@@ -17,45 +19,24 @@ namespace APIwithRedis.Middlewares
         public async Task Invoke(HttpContext context)
         {
 			try
-			{
-				await _next(context);
-				var response=context.Response;
-				
-					
-				
-				
+			{ 
+                await _next(context);
+			
 			}
-			catch (Exception ex)
+			
+            catch (Exception ex)
 			{
 				ErrorResponse errorResponse=null;
 				var response=context.Response;
-				switch(ex)
+
+				context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+				await context.Response.WriteAsync(JsonSerializer.Serialize( new ErrorResponceDTO
 				{
-					case ValidationException validationException:
-						var errorResult = _errorResponse.GetErrorResponse(
-							string.IsNullOrWhiteSpace(validationException.Errors.First().ErrorCode)
-							? validationException.Errors.First().ErrorMessage
-							: validationException.Errors.First().ErrorCode )??
-							ErrorResponse.UnhandleException;
-						response.StatusCode = (int)errorResult.HttpStatusCode;
-
-						break;
-
-					default:
-						 errorResponse= ErrorResponse.UnhandleException;
-						 response.StatusCode= (int)errorResponse.HttpStatusCode;
-						break;
-				}
-
-				var result = errorResponse == null ? string.Empty :
-					JsonSerializer.Serialize(
-
-						new ErrorResponceDTO
-						{
-							Code = errorResponse.Code,
-							Message = errorResponse.Message,
-						});
-				await response.WriteAsync(result);
+					Code = "internal_server_error",
+					Message = "Internal server error"
+				}));
+				return;
+				
 			}
         }
 

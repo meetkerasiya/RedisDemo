@@ -36,6 +36,9 @@ namespace APIwithRedis.Models
         public static readonly ErrorResponse InvalidProcessorType = new ErrorResponse(
             "invalid_payment_processor", "Payment Processor invalid", HttpStatusCode.UnavailableForLegalReasons);
 
+         public static readonly ErrorResponse InvalidRequestParameters = new ErrorResponse(
+            "invalid_request_parameter", "Request Parameter invalid", HttpStatusCode.UnavailableForLegalReasons);
+
 
         public ErrorResponse GetErrorResponse(string errorCode)
         {
