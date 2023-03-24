@@ -1,18 +1,13 @@
-﻿using APIwithRedis.CacheService;
-using APIwithRedis.CacheSetup;
-using APIwithRedis.Models;
+﻿using APIwithRedis.Models;
 using APIwithRedis.Repository;
-using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
-using System.Net;
-using System.Text.Json;
 
 namespace APIwithRedis.API
 {
     public class APIRoutes
     {
 
-        private static string recordId = "RedisKey";
+        private static string recordId = "PaymentOptions";
 
         public static void MapRoutes(WebApplication app)
         {
@@ -22,41 +17,49 @@ namespace APIwithRedis.API
             //    var result = await cacheService.GetValueAsync(recordId);
             //    return result;
             //});
-            app.MapGet("/payments", async ([FromQuery] string? Vendor,
-                [FromQuery] string? Payment_method,
-                [FromQuery] string? ProcessingType,
-                [FromQuery] string? PaymentSystem,
+            app.MapGet("/payments", async ([FromQuery] string? vendor,
+                [FromQuery] string? paymentMethod,
+                [FromQuery] string? processingType,
+                [FromQuery] string? paymentSystem,
                 IDataRepository dataRepository,
                 HttpContext context,
                 IErrorResponse errorResponse
                ) =>
             {
 
+                var validationResult = await dataRepository.CheckValidation(vendor?.ToLower().Trim(),
+                    paymentMethod?.ToLower().Trim(),
+                    processingType?.ToLower().Trim(),
+                    paymentSystem?.ToLower().Trim());
+                if (!validationResult.IsValid)
+                {
 
-            var validationResult = await dataRepository.CheckValidation(Vendor?.ToLower().Trim(),
-                Payment_method?.ToLower().Trim(),
-                ProcessingType?.ToLower().Trim(),
-                PaymentSystem?.ToLower().Trim());
-            if (!validationResult.IsValid)
-            {
-                var result = validationResult.Errors;
-                    var response =
-                        
-                           new ErrorResponceDTO()
-                           {
-                               Code = result[0].ErrorCode,
-                               Message = result[0].ErrorMessage
-                           };
-                    throw new Exception();
-                    return Results.Json(response, statusCode: (int)errorResponse.GetErrorResponse(result[0].ErrorCode).HttpStatusCode);
+                    var result = validationResult.Errors;
+                    var response=new List<ErrorResponceDTO>();
                   
-          
-               }
-                var results=await  dataRepository.paymentResults(Vendor.ToLower().Trim(),
-                    Payment_method?.ToLower().Trim(),
-                    ProcessingType?.ToLower().Trim(),
-                    PaymentSystem?.ToLower().Trim());
-                return TypedResults.Ok(results);
+                    for(int i=0; i<result.Count; i++)
+                    {
+                        response.Add(new ErrorResponceDTO()
+                        {
+                            Code = result[i].ErrorCode,
+                            Message = result[i].ErrorMessage
+                        });
+                    }    
+                          
+                    return Results.Json(response, statusCode: (int)errorResponse.GetErrorResponse(result[0].ErrorCode).HttpStatusCode);
+                    //var errors = ErrorExtension.GetErrors();
+                    //ErrorExtension.ClearErrors();
+                    //return Results.Json(errors, statusCode: (int)errorResponse.GetErrorResponse(result[0].ErrorCode).HttpStatusCode);
+
+
+                }
+
+                var results = await dataRepository.paymentResults(vendor?.ToLower().Trim(),
+                        paymentMethod?.ToLower().Trim(),
+                        processingType?.ToLower().Trim(),
+                        paymentSystem?.ToLower().Trim());
+                    return TypedResults.Ok(results);
+               
             });
         }
 

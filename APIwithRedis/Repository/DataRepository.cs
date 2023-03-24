@@ -14,7 +14,7 @@ namespace APIwithRedis.Repository
         private readonly ICacheService<List<PaymentOptions>> _cacheService;
         private readonly IValidator<PaymentOptions> _validator;
         private readonly ICacheSetup _cacheSetup;
-        private static string recordId = "RedisKey";
+        private static string recordId = "PaymentOptions";
         public DataRepository(ICacheService<List<PaymentOptions>> cacheService,IValidator<PaymentOptions> validator,ICacheSetup cacheSetup)
         {
 
