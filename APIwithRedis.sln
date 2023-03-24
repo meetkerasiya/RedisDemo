@@ -5,7 +5,7 @@ VisualStudioVersion = 17.4.33403.182
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "APIwithRedis", "APIwithRedis\APIwithRedis.csproj", "{359F0C9B-4236-4FB3-9D3A-5A106C290338}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RediaApi.Test", "RediaApi.Test\RediaApi.Test.csproj", "{EA0FE6E2-68FC-440F-9782-8B66204B5EBB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedisApi.Test", "RediaApi.Test\RedisApi.Test.csproj", "{EA0FE6E2-68FC-440F-9782-8B66204B5EBB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

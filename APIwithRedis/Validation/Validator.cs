@@ -14,6 +14,7 @@ namespace APIwithRedis.Validation
                 .NotEmpty()
                 .WithErrorCode("null_vendor_type")
                 .WithMessage("Vendor type is null");
+                
             });
             When(x => x.Vendor != null, () =>
             {

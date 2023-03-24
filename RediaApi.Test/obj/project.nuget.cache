@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "SgZGGTmYCfPlQBJo2ejt2X31nvzsefrCwQpN/MsLvYE68gFFEHDLCT5MtyG4s86c2p1f7kq0sRFFHimyeTteIw==",
+  "dgSpecHash": "tOxs6HCbQgEgJDuiYwqssI4nbIh4IxTEg+73Za0XkQmJQ2mjOU1DPfmNYJwjBcVhP3sfMQ3GgydbKScaxxBRqw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Meet  Kerasiya\\source\\repos\\APIwithRedis\\RediaApi.Test\\RedisApi.Test.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Meet  Kerasiya\\.nuget\\packages\\coverlet.collector\\3.1.2\\coverlet.collector.3.1.2.nupkg.sha512",
     "C:\\Users\\Meet  Kerasiya\\.nuget\\packages\\fluentvalidation\\11.5.1\\fluentvalidation.11.5.1.nupkg.sha512",
+    "C:\\Users\\Meet  Kerasiya\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.5.1\\fluentvalidation.dependencyinjectionextensions.11.5.1.nupkg.sha512",
     "C:\\Users\\Meet  Kerasiya\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.3\\microsoft.aspnetcore.openapi.7.0.3.nupkg.sha512",
     "C:\\Users\\Meet  Kerasiya\\.nuget\\packages\\microsoft.codecoverage\\17.3.2\\microsoft.codecoverage.17.3.2.nupkg.sha512",
     "C:\\Users\\Meet  Kerasiya\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",

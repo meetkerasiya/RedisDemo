@@ -1,6 +1,7 @@
 using APIwithRedis.API;
 using APIwithRedis.CacheService;
 using APIwithRedis.CacheSetup;
+using APIwithRedis.Middlewares;
 using APIwithRedis.Models;
 using APIwithRedis.Repository;
 using APIwithRedis.Validation;
@@ -20,15 +21,16 @@ builder.Services.AddStackExchangeRedisCache(redisoptions =>
     redisoptions.InstanceName = "RedisPayment";
 });
 
-builder.Services.AddScoped<ICacheService<List<PaymentOptions>>,CacheService<List<PaymentOptions>>>();
+builder.Services.AddSingleton<IErrorResponse, ErrorResponse>();
+builder.Services.AddSingleton<ICacheService<List<PaymentOptions>>,CacheService<List<PaymentOptions>>>();
 builder.Services.AddScoped<IValidator<PaymentOptions>, Validator>();
 builder.Services.AddScoped<IDataRepository, DataRepository>();
-builder.Services.AddScoped<ICacheSetup,CacheSetup>();
-
+builder.Services.AddSingleton<ICacheSetup,CacheSetup>();
+builder.Services.AddHostedService<CacheSetupService>();
 
 var app = builder.Build();
 
-
+//app.UseMiddleware<ErrorHandlerMiddleware>();
 //route
 APIRoutes.MapRoutes(app);
 

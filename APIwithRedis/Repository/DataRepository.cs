@@ -14,7 +14,7 @@ namespace APIwithRedis.Repository
         private readonly ICacheService<List<PaymentOptions>> _cacheService;
         private readonly IValidator<PaymentOptions> _validator;
         private readonly ICacheSetup _cacheSetup;
-        private static string recordId = "abc";
+        private static string recordId = "RedisKey";
         public DataRepository(ICacheService<List<PaymentOptions>> cacheService,IValidator<PaymentOptions> validator,ICacheSetup cacheSetup)
         {
 
@@ -24,7 +24,7 @@ namespace APIwithRedis.Repository
         }
         public async Task<List<ResponseDto>> paymentResults(string Vendor, string? Payment_method, string? ProcessingType, string? PaymentSystem)
         {
-            await _cacheSetup.LoadData();
+            
             var result = await _cacheService.GetValueAsync(recordId);
             var finalResult= result.FindAll(p =>
                (Vendor.Equals(p.Vendor.ToLower())) &&

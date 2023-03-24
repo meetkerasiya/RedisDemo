@@ -6,13 +6,13 @@ namespace APIwithRedis.CacheSetup
 {
     public class CacheSetup : ICacheSetup
     {
-        string recordKey = "abc";
+        string recordKey = "RedisKey";
         public CacheSetup(ICacheService<List<PaymentOptions>> cacheService, ILogger<CacheSetup> logger)
         {
 
             _cacheService = cacheService;
             _logger = logger;
- 
+        
         }
         private readonly IDistributedCache _cache;
         private readonly ICacheService<List<PaymentOptions>> _cacheService;
