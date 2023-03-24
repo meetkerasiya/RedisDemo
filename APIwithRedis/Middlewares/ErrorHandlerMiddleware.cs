@@ -21,19 +21,9 @@ namespace APIwithRedis.Middlewares
 			try
 			{ 
                 await _next(context);
-				
-				
-					
-				
-				
+			
 			}
-			catch(BulkValidationException ex)
-			{
-                var response = context.Response;
-
-                await response.WriteAsJsonAsync(ex.BulkErrors);
-
-            }
+			
             catch (Exception ex)
 			{
 				ErrorResponse errorResponse=null;
@@ -46,37 +36,7 @@ namespace APIwithRedis.Middlewares
 					Message = "Internal server error"
 				}));
 				return;
-				//switch(ex)
-				//{
-				//	case ValidationException validationException:
-				//		var errorResult = _errorResponse.GetErrorResponse(
-				//			string.IsNullOrWhiteSpace(validationException.Errors.First().ErrorCode)
-				//			? validationException.Errors.First().ErrorMessage
-				//			: validationException.Errors.First().ErrorCode )??
-				//			ErrorResponse.UnhandleException;
-				//		response.StatusCode = (int)errorResult.HttpStatusCode;
-				//		if(validationException is BulkValidationException)
-				//		{
-				//			await response.WriteAsJsonAsync(validationException.Errors);
-
-    //                    }
-				//		break;
-
-				//	default:
-				//		 errorResponse= ErrorResponse.UnhandleException;
-				//		 response.StatusCode= (int)errorResponse.HttpStatusCode;
-				//		break;
-				//}
-
-				//var result = errorResponse == null ? string.Empty :
-				//	JsonSerializer.Serialize(
-
-				//		new ErrorResponceDTO
-				//		{
-				//			Code = errorResponse.Code,
-				//			Message = errorResponse.Message,
-				//		});
-				//await response.WriteAsync(result);
+				
 			}
         }
 
